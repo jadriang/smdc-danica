@@ -12,7 +12,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-screen">
         <Image
-          src="/hero-image.jpg"
+          src="/images/Hero-banner.jpg"
           alt="SMDC Condo in Manila"
           layout="fill"
           objectFit="cover"
