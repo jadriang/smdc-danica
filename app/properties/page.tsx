@@ -2,51 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select } from '@/components/ui/select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Bed, Bath, Maximize, MapPin } from 'lucide-react'
-
-const properties = [
-  {
-    id: 1,
-    name: 'Gold Residences',
-    location: 'Parañaque City',
-    price: 8000000,
-    bedrooms: 2,
-    bathrooms: 2,
-    area: 60,
-    image: 'https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg',
-    description: 'Luxury living at its finest with world-class amenities and prime location.',
-    type: 'Condominium',
-    status: 'Ready for Occupancy',
-  },
-  {
-    id: 2,
-    name: 'Shore Residences',
-    location: 'Pasay City',
-    price: 7500000,
-    bedrooms: 1,
-    bathrooms: 1,
-    area: 45,
-    image: 'https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg',
-    description: 'Resort-inspired living in the heart of the city.',
-    type: 'Condominium',
-    status: 'Pre-selling',
-  },
-  {
-    id: 3,
-    name: 'Green Residences',
-    location: 'Manila',
-    price: 6500000,
-    bedrooms: 2,
-    bathrooms: 2,
-    area: 55,
-    image: 'https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg',
-    description: 'Modern urban living with eco-friendly features.',
-    type: 'Condominium',
-    status: 'Ready for Occupancy',
-  },
-]
+import { properties } from '@/app/properties/properties';
 
 export default function PropertiesPage() {
   return (
@@ -64,27 +23,42 @@ export default function PropertiesPage() {
             <div>
               <label className="text-sm text-gray-600 mb-1 block">Price Range</label>
               <Select name="priceRange">
-                <option value="">Any Price</option>
-                <option value="0-5000000">Below ₱5M</option>
-                <option value="5000000-10000000">₱5M - ₱10M</option>
-                <option value="10000000+">Above ₱10M</option>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Any Price" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="any">Any Price</SelectItem>
+                  <SelectItem value="0-5000000">Below ₱5M</SelectItem>
+                  <SelectItem value="5000000-10000000">₱5M - ₱10M</SelectItem>
+                  <SelectItem value="10000000+">Above ₱10M</SelectItem>
+                </SelectContent>
               </Select>
             </div>
             <div>
               <label className="text-sm text-gray-600 mb-1 block">Bedrooms</label>
               <Select name="bedrooms">
-                <option value="">Any</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3+</option>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Any" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="any">Any</SelectItem>
+                  <SelectItem value="1">1</SelectItem>
+                  <SelectItem value="2">2</SelectItem>
+                  <SelectItem value="3">3+</SelectItem>
+                </SelectContent>
               </Select>
             </div>
             <div>
               <label className="text-sm text-gray-600 mb-1 block">Property Type</label>
               <Select name="type">
-                <option value="">Any Type</option>
-                <option value="condo">Condominium</option>
-                <option value="apartment">Apartment</option>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Any Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="any">Any Type</SelectItem>
+                  <SelectItem value="condo">Condominium</SelectItem>
+                  <SelectItem value="apartment">House & Lot</SelectItem>
+                </SelectContent>
               </Select>
             </div>
             <Button type="submit" className="md:col-span-4 bg-red-600 hover:bg-red-700 text-white">
@@ -115,7 +89,7 @@ export default function PropertiesPage() {
                     <MapPin className="w-4 h-4 mr-1" />
                     <span className="text-sm">{property.location}</span>
                   </div>
-                  <p className="font-bold text-2xl text-red-600 mb-4">₱{property.price.toLocaleString()}</p>
+                  <p className="font-bold text-2xl text-red-600 mb-4">{property.priceRange.toLocaleString()}</p>
                   <div className="flex items-center justify-between text-gray-600">
                     <div className="flex items-center">
                       <Bed className="w-4 h-4 mr-1" />
@@ -131,12 +105,12 @@ export default function PropertiesPage() {
                     </div>
                   </div>
                 </CardContent>
+                <CardFooter className="px-6 py-4 bg-gray-50 border-t">
+                  <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
+                    View Details
+                  </Button>
+                </CardFooter>
               </Link>
-              <CardFooter className="px-6 py-4 bg-gray-50 border-t">
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white">
-                  View Details
-                </Button>
-              </CardFooter>
             </Card>
           ))}
         </div>

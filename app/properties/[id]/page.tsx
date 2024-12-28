@@ -4,45 +4,7 @@ import { notFound } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Bed, Bath, Maximize, MapPin, Check } from 'lucide-react'
-
-// This would typically come from an API or database
-const properties = [
-  {
-    id: 1,
-    name: 'Gold Residences',
-    location: 'Parañaque City',
-    price: 8000000,
-    bedrooms: 2,
-    bathrooms: 2,
-    area: 60,
-    image: 'https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg',
-    description: 'Luxury living at its finest with world-class amenities and prime location.',
-    type: 'Condominium',
-    status: 'Ready for Occupancy',
-    features: [
-      'Resort-style swimming pool',
-      'Fully-equipped fitness center',
-      'Function rooms',
-      'Children\'s play area',
-      '24/7 security',
-      'Backup power',
-      'Parking space',
-      'Retail areas'
-    ],
-    amenities: [
-      'Swimming Pool',
-      'Gym',
-      'Function Room',
-      'Kids Play Area',
-      'Landscaped Gardens',
-      'Jogging Path',
-      'Basketball Court',
-      'Security'
-    ],
-    gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg')
-  },
-  // ... other properties
-]
+import { properties } from '@/app/properties/properties'
 
 export default function PropertyPage({ params }: { params: { id: string } }) {
   const property = properties.find(p => p.id === parseInt(params.id))
@@ -93,7 +55,7 @@ export default function PropertyPage({ params }: { params: { id: string } }) {
             <Card>
               <CardContent className="p-6">
                 <p className="text-3xl font-bold text-red-600 mb-4">
-                  ₱{property.price.toLocaleString()}
+                  {property.priceRange.toLocaleString()}
                 </p>
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center">
