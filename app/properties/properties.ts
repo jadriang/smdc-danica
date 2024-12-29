@@ -1,19 +1,4 @@
-export interface Property {
-    id: number;
-    name: string;
-    location: string;
-    priceRange: string;
-    bedrooms: string;
-    bathrooms: string;
-    area: string;
-    image: string;
-    description: string;
-    type: string;
-    status: string;
-    features: string[];
-    amenities: string[];
-    gallery: string[];
-}
+import { Property } from "@/types/property";
 
 export const properties: Property[] = [
     {
@@ -36,6 +21,7 @@ export const properties: Property[] = [
         ],
         amenities: ['Clubhouse', 'Playground', 'Basketball court', 'Swimming pool'],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: true,
     },
     {
         id: 2,
@@ -57,6 +43,7 @@ export const properties: Property[] = [
         ],
         amenities: ['Clubhouse', 'Swimming pool', 'Children’s playground', 'Basketball court'],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: true,
     },
     {
         id: 3,
@@ -78,6 +65,7 @@ export const properties: Property[] = [
         ],
         amenities: ['Clubhouse', 'Swimming pool', 'Playground', 'Jogging paths'],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: true,
     },
     {
         id: 4,
@@ -99,6 +87,7 @@ export const properties: Property[] = [
         ],
         amenities: ['Clubhouse', 'Swimming pool', 'Basketball court', 'Children’s play area'],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: false,
     },
     {
         id: 5,
@@ -127,6 +116,7 @@ export const properties: Property[] = [
             'Lounge Areas',
         ],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: false,
     },
     {
         id: 6,
@@ -155,6 +145,7 @@ export const properties: Property[] = [
             'Jogging Path',
         ],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: false,
     },
     {
         id: 7,
@@ -183,6 +174,7 @@ export const properties: Property[] = [
             'Landscaped Areas',
         ],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: false,
     },
     {
         id: 8,
@@ -214,6 +206,7 @@ export const properties: Property[] = [
             'Children’s Play Area',
         ],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: false,
     },
     {
         id: 9,
@@ -242,6 +235,7 @@ export const properties: Property[] = [
             'Landscaped Gardens',
         ],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: false,
     },
     {
         id: 10,
@@ -271,5 +265,8 @@ export const properties: Property[] = [
             'Jogging Path',
         ],
         gallery: Array(6).fill('https://smdc-philippines.com/wp-content/uploads/2019/07/air_amenities-7-2.jpg'),
+        isFeatured: false,
     },
 ];
+
+export const getFeaturedProperties = () => properties.filter((property) => property.isFeatured);

@@ -3,6 +3,7 @@ import '@/components/ui/dropdown-menu/styles.css'
 import { Inter } from 'next/font/google'
 import Header from './components/header'
 import Footer from './components/footer'
+import { Viewport } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,10 +16,6 @@ export const metadata = {
   keywords: ['SMDC', 'condo', 'Manila', 'real estate', 'property', 'investment'],
   authors: [{ name: 'Juan Dela Cruz' }],
   creator: 'Juan Dela Cruz',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
   openGraph: {
     type: 'website',
     locale: 'en_PH',
@@ -44,6 +41,13 @@ export const metadata = {
     },
   },
 };
+
+export const viewPort: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
 
 export default function RootLayout({
   children,
